@@ -52,3 +52,17 @@ The user-provided `FlowPilot-Automation-main.zip` was inspected before attemptin
 ### Next required action
 
 Obtain a complete source export from the original website project (including HTML, CSS, JavaScript, SVG/images and any build/configuration files), or recover the exact deployment source through the original Vercel project/Git integration. Before deploying any recovered source, compare Vercel build settings and run a preview deployment plus smoke tests. Keep the existing production deployment untouched until the preview passes.
+
+
+## Vercel source-of-truth and Git linkage check — 2026-11-05
+
+- Confirmed Vercel project: `flowpilot-europe-automation` (`prj_5yczhf9iceV1Cte1Bz90tVcfmq5E`) under team `prajwal's projects`.
+- Latest production deployment `dpl_EM1GZWA4MGE6YSnUCnYiuwJGCRwq` reports `READY`.
+- The project's detected framework is `null`.
+- The Vercel team's linked Git-project inventory does not include FlowPilot Automation, so no existing Git-linked source repository was identified for this Vercel project.
+- The deployment file inventory is available, but the previous large-file content retrieval was truncated by the connector response limit. No complete source export was obtained.
+- The uploaded repository ZIP is a documentation/configuration snapshot, not the deployed frontend source package.
+
+### Release safety decision
+
+Do not connect the current documentation-only repository to the existing production Vercel project yet. A Git connection could trigger builds from an incomplete repository and replace the working website with an incomplete deployment. First restore and verify all deployed frontend assets in a dedicated branch/preview; only then evaluate Git linkage and production deployment settings.
