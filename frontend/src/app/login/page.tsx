@@ -1,3 +1,4 @@
+import Link from "next/link";
 "use client";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -19,12 +20,12 @@ export default function LoginPage() {
     finally { setBusy(false); }
   }
   return <main className="auth-shell"><form className="auth-card" onSubmit={submit}>
-    <a className="brand" href="/">FlowPilot<span>.</span></a><p className="eyebrow">OWNER ACCESS</p>
+    <Link className="brand" href="/">FlowPilot<span>.</span></Link><p className="eyebrow">OWNER ACCESS</p>
     <h1>Sign in</h1><p className="muted">Use your provisioned Supabase owner account.</p>
     <label>Email<input type="email" autoComplete="username" required value={email} onChange={e=>setEmail(e.target.value)}/></label>
     <label>Password<input type="password" autoComplete="current-password" required value={password} onChange={e=>setPassword(e.target.value)}/></label>
     {error && <p className="error" role="alert">{error}</p>}
     <button className="button" disabled={busy}>{busy?"Signing in…":"Sign in securely"}</button>
-    <a className="muted back" href="/">← Back to website</a>
+    <Link className="muted back" href="/">← Back to website</Link>
   </form></main>;
 }
