@@ -29,7 +29,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if grep -RInE 'SUPABASE_SERVICE_ROLE_KEY=eyJ|RESEND_API_KEY=re_[A-Za-z0-9]+' --exclude-dir=.git .; then
+          if grep -RInE 'SUPABASE_SERVICE_ROLE_KEY=eyJ|RESEND_API_KEY=re_[A-Za-z0-9]+' --exclude-dir=.git --exclude=ci.yml .; then
             echo "Potential secret found"; exit 1
           fi
 
