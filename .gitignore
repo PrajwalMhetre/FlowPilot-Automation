@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+node_modules/
+.DS_Store
+.vercel/
+coverage/
+playwright-report/
+test-results/
+*.log
