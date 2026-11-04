@@ -1,3 +1,4 @@
+import Link from "next/link";
 "use client";
 import { useState, type FormEvent } from "react";
 import { getSupabase } from "@/lib/supabase";
@@ -18,7 +19,7 @@ export default function Home() {
   finally{setBusy(false);}
  }
  return <main className="shell">
-  <nav><a className="brand" href="/">FlowPilot<span>.</span></a><a href="#workflow">Platform</a><a href="/login">Owner login ↗</a></nav>
+  <nav><Link className="brand" href="/">FlowPilot<span>.</span></a><a href="#workflow">Platform</a><a href="/login">Owner login ↗</a></nav>
   <section className="hero"><p className="eyebrow">AUTOMATION OPERATIONS PLATFORM</p><h1>Move every enquiry<br/><em>forward.</em></h1><p className="intro">A clear, controlled workflow for capturing, qualifying and routing business enquiries.</p><a className="button" href="#enquiry">Discuss your workflow <span>→</span></a></section>
   <section id="workflow" className="grid">{[["Capture","Collect enquiries through validated, structured intake."],["Qualify","Apply consistent qualification rules and prioritisation."],["Route","Send work to the right owner with an auditable status."],["Measure","Track operational outcomes without losing context."]].map(([title,body],i)=><article key={title}><small>0{i+1}</small><h2>{title}</h2><p>{body}</p></article>)}</section>
   <section id="enquiry" className="form-section"><div><p className="eyebrow">START A CONVERSATION</p><h2>Where does your enquiry process slow down?</h2><p className="muted">Share the basics. We will review the workflow before proposing automation.</p></div>
