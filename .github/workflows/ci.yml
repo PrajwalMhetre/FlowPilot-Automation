@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  repository-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check required documentation
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in README.md LICENSE SECURITY.md CONTRIBUTING.md docs/architecture.md docs/api.md docs/database.md docs/security.md docs/deployment.md; do
+            test -s "$file" || { echo "Missing or empty: $file"; exit 1; }
+          done
+
+      - name: Check for accidental secret patterns
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RInE 'SUPABASE_SERVICE_ROLE_KEY=eyJ|RESEND_API_KEY=re_[A-Za-z0-9]+' --exclude-dir=.git .; then
+            echo "Potential secret found"; exit 1
+          fi
+
+      - name: Validate architecture diagram
+        run: grep -q 'flowchart LR' docs/architecture.md
