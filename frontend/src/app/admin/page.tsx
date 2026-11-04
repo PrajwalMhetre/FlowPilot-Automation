@@ -1,3 +1,4 @@
+import Link from "next/link";
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -32,7 +33,7 @@ export default function AdminPage() {
   }
   async function logout(){await getSupabase().auth.signOut();router.replace("/login");}
   return <main className="dashboard">
-    <header className="dash-head"><a className="brand" href="/">FlowPilot<span>.</span></a><div><span className="muted">{email}</span> <button className="quiet" onClick={logout}>Sign out</button></div></header>
+    <header className="dash-head"><Link className="brand" href="/">FlowPilot<span>.</span></a><div><span className="muted">{email}</span> <button className="quiet" onClick={logout}>Sign out</button></div></header>
     <section className="dash-title"><p className="eyebrow">OWNER CRM</p><h1>Lead pipeline</h1><p className="muted">Private owner workspace · {leads.length} leads loaded</p></section>
     {error&&<p className="error banner" role="alert">{error}</p>}
     {loading?<p className="muted">Loading secured CRM…</p>:leads.length===0?<p className="empty">No leads have been submitted yet.</p>:<section className="lead-list">{leads.map(lead=><article className="lead-card" key={lead.id}>
