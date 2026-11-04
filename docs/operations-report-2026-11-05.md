@@ -20,6 +20,12 @@
 - Resend notification delivery.
 - End-to-end privacy and consent compliance.
 
+## Repository bootstrap
+
+- The public GitHub repository was initialized with operational, architecture, API, database, security, deployment and contributor documentation on 2026-11-05.
+- A basic GitHub Actions workflow was added to validate required documentation, scan for obvious credential patterns and confirm the architecture diagram source exists.
+- GitHub repository write permission was verified through the connected account.
+
 ## Risks / follow-up
 
 1. Intake handler parses malformed JSON into a generic 500 path.
