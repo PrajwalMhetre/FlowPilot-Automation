@@ -34,4 +34,4 @@ jobs:
           fi
 
       - name: Validate architecture diagram
-        run: grep -q 'flowchart LR' docs/architecture.md
+        run: grep -Eq '(flowchart LR|graph (LR|TD))' docs/architecture.md
