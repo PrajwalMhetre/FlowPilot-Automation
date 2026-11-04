@@ -37,3 +37,18 @@
 7. Privacy notice is incomplete for EU-oriented data collection.
 
 This report is evidence of point-in-time inspection, not a security certification or production readiness attestation.
+
+
+## Frontend source archive review — 2026-11-05
+
+The user-provided `FlowPilot-Automation-main.zip` was inspected before attempting source integration.
+
+- Archive contains 19 entries: repository documentation/configuration plus `src/report.html`.
+- Archive does **not** contain the deployed homepage (`src/index.html`), CRM page (`src/admin.html`), blog pages, stylesheets, JavaScript assets, or SVG assets.
+- Therefore this archive is not a complete frontend source package and cannot be used to reproduce the current deployed website in the repository.
+- The live homepage was separately inspected in a browser. Its rendered content confirms the service sections, enquiry form fields, blog links and navigation, but rendered page text is not a substitute for the original source assets.
+- No production deployment was changed as part of this archive review.
+
+### Next required action
+
+Obtain a complete source export from the original website project (including HTML, CSS, JavaScript, SVG/images and any build/configuration files), or recover the exact deployment source through the original Vercel project/Git integration. Before deploying any recovered source, compare Vercel build settings and run a preview deployment plus smoke tests. Keep the existing production deployment untouched until the preview passes.
